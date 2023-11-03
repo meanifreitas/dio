@@ -8,7 +8,7 @@ const Home = () => {
   const navigate = useNavigate();
 
   const handleSignIn = () => {
-    navigate('./login')
+    navigate('/login');
   }
 
   return (<>
