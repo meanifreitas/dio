@@ -1,10 +1,16 @@
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import banner from '../../assets/banner.png';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 import { Container, TextContent, Title, HighlightedTitle } from './styles';
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const handleSignIn = () => {
+    navigate('./login')
+  }
+
   return (<>
     <Header />
     <Container>
@@ -19,7 +25,7 @@ const Home = () => {
         <TextContent>
           Rule the technologies used by the most innovative companies in the world and face your new professiona challenge, evolving in community with the best experts.
         </TextContent>
-        <Button title="Start now" variant="secondary" onClick={() => null}></Button>
+        <Button title="Start now" variant="secondary" onClick={handleSignIn}></Button>
       </div>
       <div>
         <img src={banner} alt='Banner' />

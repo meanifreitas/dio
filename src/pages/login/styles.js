@@ -1,9 +1,8 @@
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.main`
-  width: 70%;
-  max-width: 70%;
-  height: 80%;
+  width: 100%;
+  max-width: 80%;
   margin: 0 auto;
   margin-top: 120px;
 
@@ -11,15 +10,23 @@ export const Container = styled.main`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-`;
+`
 
 export const Wrapper = styled.div`
   max-width: 300px;
-`;
+`
 
-export const column = styled.div`
+export const Column = styled.div`
   flex: 1;
-`;
+`
+
+export const Row = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+`
 
 export const Title = styled.h2`
   font-family: 'Open Sans';
@@ -27,18 +34,47 @@ export const Title = styled.h2`
   font-weight: 700;
   font-size: 32px;
   width: 320px;
+  max-width: 90%;
   margin-bottom: 20px;
   line-height: 44px;
-  color: #FFFFF;
-`;
 
-export const TextContent = styled.p`
+  color: #FFFFFF;
+`
+
+export const LoginTitle = styled.p`
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 44px;
+  margin-bottom: 20px;
+`
+
+export const LoginSubtitle = styled.p`
   font-family: 'Open Sans';
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  width: 420;
-  margin-bottom: 20px;
-  line-height: 22px;
-  color: #FFFFFF;
-`;
+  font-size: 18px;
+  line-height: 25px;
+  margin-bottom: 35px;
+`
+
+export const ForgotPasswordText = styled.p`
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #E5E044;
+` 
+
+export const SignUpText =  styled.p`
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+
+  color: #23DD7A;
+`

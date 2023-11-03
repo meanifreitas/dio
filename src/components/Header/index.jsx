@@ -7,26 +7,32 @@ import {
   Menu,
   RightMenu,
   Row,
-  Wrapper
+  Wrapper,
+  UserPicture
 } from './styles';
 
-export default function Header() {
+export default function Header({auth}) {
   return (
     <Wrapper>
       <Container>
         <Row>
           <img src={logo} alt='DIO logo' />
-          <SearchInputContainer>
-            <Input placeholder='Search...'/>
-          </SearchInputContainer>
-          <Menu>Live Code</Menu>
-          <Menu>Global</Menu>
+          {auth ? (<>
+            <SearchInputContainer>
+              <Input placeholder='Search...'/>
+            </SearchInputContainer>
+            <Menu>Live Code</Menu>
+            <Menu>Global</Menu>
+            </>) : null}
         </Row>
         <Row>
-          <RightMenu href='#'>Home</RightMenu>
-          
-          <Button title='Login'/>
-          <Button title='Sign up'/>
+          {auth? (<>
+            <UserPicture src="https://avatars.githubusercontent.com/u/61467221?v=4" />
+            </>) : (<>
+            <RightMenu href='#'>Home</RightMenu>
+            <Button title='Login'/>
+            <Button title='Sign up'/>
+            </>)}
         </Row>
       </Container>
     </Wrapper>
