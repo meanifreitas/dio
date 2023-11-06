@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const CardContainer = styled.div`
-  //TODO: fix width
   width: 100%;
   background-color: #3B4651;
   position: relative;
