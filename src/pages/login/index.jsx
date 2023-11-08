@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
+import { api } from '../../services/api';
 
 import {
   Container,
@@ -27,15 +28,23 @@ const schema = yup.object({
 const Login = () => {
   const navigate = useNavigate();
 
-  const { control, handleSubmit, formState: { errors, isValid } } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema),
     mode: 'onChange'
   });
 
-  const onSubmit = data => console.log(data);
+  const onSubmit = async formData => {
+    try {
+      const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
 
-  const handleClick = () => {
-    navigate('/feed');
+      if (data.length) {
+        navigate('/feed');
+      } else {
+        alert('Invalid email or password!')
+      }
+    } catch (e) {
+      alert('Server error. Try again!');
+    }
   }
 
   return (<>
@@ -65,7 +74,7 @@ const Login = () => {
               leftIcon={<MdLock />}
               errorMessage={errors?.password?.message}
             />
-            <Button title="Sign in" variant="secondary" type="submit" onClick={handleClick}/>
+            <Button title="Sign in" variant="secondary" type="submit" onClick={onSubmit}/>
           </form>
           <Row>
             <ForgotPasswordText>Forgot my password</ForgotPasswordText>
