@@ -29,7 +29,7 @@ export default function Header({auth}) {
           {auth? (<>
             <UserPicture src="https://avatars.githubusercontent.com/u/61467221?v=4" />
             </>) : (<>
-            <RightMenu href='#'>Home</RightMenu>
+            <RightMenu href='/'>Home</RightMenu>
             <Button title='Login'/>
             <Button title='Sign up'/>
             </>)}
