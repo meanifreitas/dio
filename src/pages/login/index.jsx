@@ -22,7 +22,7 @@ import {
 
 const schema = yup.object({
   email: yup.string().email('type a valid email').required(),
-  password: yup.string().min('3', 'password must be at least 3 characters').required()
+  password: yup.string().min('5', 'password must be at least 5 characters').required()
 });
 
 const Login = () => {
@@ -34,16 +34,18 @@ const Login = () => {
   });
 
   const onSubmit = async formData => {
-    try {
-      const { data } = await api.get(`users?email=${formData.email}&senha=${formData.password}`);
-
-      if (data.length) {
-        navigate('/feed');
-      } else {
-        alert('Invalid email or password!')
+    if (formData.email && formData.password) {
+      try {
+        const { data } = await api.get(`users?email=${formData.email}&password=${formData.password}`);
+  
+        if (data.length) {
+          navigate('/feed');
+        } else {
+          alert('Invalid email or password!')
+        }
+      } catch (e) {
+        alert('Server error. Try again!');
       }
-    } catch (e) {
-      alert('Server error. Try again!');
     }
   }
 

@@ -26,7 +26,7 @@ export const Title = styled.h2`
 `;
 
 export const Wrapper = styled.div`
-  width: 380px;
+  max-width: 300px;
 `;
 
 export const SignUpTitle = styled.h2`
@@ -40,4 +40,16 @@ export const SignUpSubtitle = styled.p`
   font-family: 'Open Sans';
   font-size: 18px;
   font-weight: 400;
+  margin-bottom: 10px;
+`;
+
+export const SignUpInfo = styled.p`
+  font-family: 'Open Sans';
+  font-size: 14px;
+  font-weight: 400;
+  margin-top: 20px;
+`;
+
+export const Row = styled.div`
+  max-width: 300px;
 `;
