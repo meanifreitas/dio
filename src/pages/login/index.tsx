@@ -19,21 +19,22 @@ import {
   ForgotPasswordText,
   SignUpText
 } from './styles';
+import { IFormData } from './types';
 
 const schema = yup.object({
   email: yup.string().email('type a valid email').required(),
-  password: yup.string().min('5', 'password must be at least 5 characters').required()
+  password: yup.string().min(5, 'password must be at least 5 characters').required()
 });
 
 const Login = () => {
   const navigate = useNavigate();
 
-  const { control, handleSubmit, formState: { errors } } = useForm({
+  const { control, handleSubmit, formState: { errors } } = useForm<IFormData>({
     resolver: yupResolver(schema),
     mode: 'onChange'
   });
 
-  const onSubmit = async formData => {
+  const onSubmit = async (formData: IFormData) => {
     if (formData.email && formData.password) {
       try {
         const { data } = await api.get(`users?email=${formData.email}&password=${formData.password}`);
@@ -76,7 +77,7 @@ const Login = () => {
               leftIcon={<MdLock />}
               errorMessage={errors?.password?.message}
             />
-            <Button title="Sign in" variant="secondary" type="submit" onClick={onSubmit}/>
+            <Button title="Sign in" variant="secondary" type="submit" onClick={() => onSubmit}/>
           </form>
           <Row>
             <ForgotPasswordText>Forgot my password</ForgotPasswordText>

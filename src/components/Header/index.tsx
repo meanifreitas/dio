@@ -10,8 +10,9 @@ import {
   Wrapper,
   UserPicture
 } from './styles';
+import { IHeader } from './types';
 
-export default function Header({auth}) {
+export default function Header({auth}: IHeader) {
   return (
     <Wrapper>
       <Container>

@@ -1,6 +1,7 @@
 import { Container, NameText, Progress, UserPic} from './styles';
+import { IUserInfo } from './types';
 
-export default function UserInfo({name, img, percent}) {
+export default function UserInfo({name, img, percent}: IUserInfo) {
   return (
     <Container>
       <UserPic src={img} />
