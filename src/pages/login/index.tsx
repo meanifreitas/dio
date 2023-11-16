@@ -2,11 +2,11 @@ import Header from '../../components/Header';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 import { MdEmail, MdLock } from 'react-icons/md';
-import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import { api } from '../../services/api';
+import { useContext }  from 'react';
+import { AuthContext } from '../../context/auth';
 
 import {
   Container,
@@ -27,7 +27,7 @@ const schema = yup.object({
 });
 
 const Login = () => {
-  const navigate = useNavigate();
+  const { handleLogin } = useContext(AuthContext);
 
   const { control, handleSubmit, formState: { errors } } = useForm<IFormData>({
     resolver: yupResolver(schema),
@@ -36,17 +36,9 @@ const Login = () => {
 
   const onSubmit = async (formData: IFormData) => {
     if (formData.email && formData.password) {
-      try {
-        const { data } = await api.get(`users?email=${formData.email}&password=${formData.password}`);
-  
-        if (data.length) {
-          navigate('/feed');
-        } else {
-          alert('Invalid email or password!')
-        }
-      } catch (e) {
-        alert('Server error. Try again!');
-      }
+      handleLogin(formData);
+    } else {
+      alert('Invalid email or password!');
     }
   }
 

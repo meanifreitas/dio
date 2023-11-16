@@ -5,7 +5,7 @@ import { Container, Column, HighlightedTitle, Title } from './styles';
 
 const Feed = () => {
   return (<>
-    <Header auth={true}/>
+    <Header/>
     <Container>
       <Column flex={3}>
         <Title>Feed</Title>

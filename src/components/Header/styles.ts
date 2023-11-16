@@ -5,7 +5,7 @@ export const Container = styled.div`
   max-height: 80%;
   height: 47px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   margin: 0 auto;
 `;
@@ -68,6 +68,7 @@ export const UserPicture = styled.img`
   height: 32px;
   border-radius: 22px;
   border: 2px solid #FFFFFF;
+  margin-right: 12px;
 `;
 
 export const Input = styled.input`

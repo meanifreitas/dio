@@ -10,15 +10,21 @@ import {
   Wrapper,
   UserPicture
 } from './styles';
-import { IHeader } from './types';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/auth';
+import { Link } from 'react-router-dom';
 
-export default function Header({auth}: IHeader) {
+export default function Header() {
+  const { user, handleSignOut } = useContext(AuthContext);
+
   return (
     <Wrapper>
       <Container>
         <Row>
-          <img src={logo} alt='DIO logo' />
-          {auth ? (<>
+          <Link to='/'>
+            <img src={logo} alt='DIO logo' />
+          </Link>
+          {user.id ? (<>
             <SearchInputContainer>
               <Input placeholder='Search...'/>
             </SearchInputContainer>
@@ -27,8 +33,9 @@ export default function Header({auth}: IHeader) {
             </>) : null}
         </Row>
         <Row>
-          {auth? (<>
+          {user.id ? (<>
             <UserPicture src="https://avatars.githubusercontent.com/u/61467221?v=4" />
+            <a href="/" onClick={handleSignOut}>Sign out</a>
             </>) : (<>
             <RightMenu href='/'>Home</RightMenu>
             <Button title='Login'/>
